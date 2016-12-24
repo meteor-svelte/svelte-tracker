@@ -1,0 +1,19 @@
+<div ref:_container></div>
+
+<script>
+export default {
+  onrender() {
+    const component = new this._component({
+      target: this.refs._container
+    });
+
+    this._computation = Tracker.autorun(() => {
+      this._dataProvider.call(component);
+    });
+  },
+
+  onteardown() {
+    this._computation.stop();
+  }
+};
+</script>
