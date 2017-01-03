@@ -1,19 +1,30 @@
 <div ref:_container></div>
 
 <script>
+import { Tracker } from 'meteor/tracker';
+
 export default {
   onrender() {
-    const component = new this._component({
+    const { data, onrender } = this._options;
+
+    this._instance = new this._component({
       target: this.refs._container
     });
 
-    this._computation = Tracker.autorun(() => {
-      this._dataProvider.call(component);
+    Tracker.nonreactive(() => {
+      this._computation = Tracker.autorun(() => {
+        data.call(null, this._instance);
+      });
     });
+
+    onrender && onrender(this._instance);
   },
 
   onteardown() {
+    const { onteardown } = this._options;
+
     this._computation.stop();
+    onteardown && onteardown(this._instance);
   }
 };
 </script>

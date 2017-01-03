@@ -1,12 +1,11 @@
-import Container from './imports/Container.html';
+import Container from './Container.html';
 
-export function withTracker(component, dataProvider) {
-  // Create a new component and store the original component and the data
-  // provider so that they can be accessed in the container's `onrender`
-  // function
+export function withTracker(component, options) {
+  // Create a new component and store the original component and the options so
+  // that they can be accessed in the container's `onrender` function
   function Wrapped() {
     this._component = component;
-    this._dataProvider = dataProvider;
+    this._options = options;
 
     Container.apply(this, arguments);
   }

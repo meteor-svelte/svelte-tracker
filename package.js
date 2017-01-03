@@ -5,12 +5,12 @@ Package.describe({
   git: 'https://github.com/meteor-svelte/svelte-tracker.git'
 });
 
-Package.onUse(function(api) {
+Package.onUse(function (api) {
   api.versionsFrom('1.4.2.3');
 
   // Compile ECMAScript and Svelte in this package
   api.use('ecmascript');
-  api.use('klaussner:svelte');
+  api.use('svelte:compiler');
 
   api.addFiles('Container.html');
   api.mainModule('with-tracker.js');
