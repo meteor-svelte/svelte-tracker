@@ -12,6 +12,5 @@ Package.onUse(function (api) {
   api.use('ecmascript');
   api.use('svelte:compiler');
 
-  api.addFiles('Container.html');
   api.mainModule('with-tracker.js');
 });
