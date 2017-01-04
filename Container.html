@@ -11,20 +11,25 @@ export default {
       target: this.refs._container
     });
 
+    // Create an empty context object that will be passed as `this` to each
+    // user-defined function. This object can be used to store container state,
+    // e.g., live query handles and timeout identifiers.
+    this._context = Object.create(null);
+
     Tracker.nonreactive(() => {
       this._computation = Tracker.autorun(() => {
-        data.call(null, this._instance);
+        data.call(this._context, this._instance);
       });
     });
 
-    onrender && onrender(this._instance);
+    onrender && onrender.call(this._context, this._instance);
   },
 
   onteardown() {
     const { onteardown } = this._options;
 
     this._computation.stop();
-    onteardown && onteardown(this._instance);
+    onteardown && onteardown.call(this._context, this._instance);
   }
 };
 </script>
