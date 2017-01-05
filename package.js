@@ -8,6 +8,8 @@ Package.describe({
 Package.onUse(function (api) {
   api.versionsFrom('1.4.2.3');
 
+  api.use('tracker');
+
   // Compile ECMAScript and Svelte in this package
   api.use('ecmascript');
   api.use('svelte:compiler');
