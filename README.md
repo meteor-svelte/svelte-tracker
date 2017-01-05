@@ -34,36 +34,4 @@ Called before the container is removed from the DOM.
 
 ## Example
 
-```html
-<!-- Component.html -->
-
-{{#if person}}
-  <h1>Hello {{person.name}}!</h1>
-{{/if}}
-```
-
-```js
-// Container.js
-
-import { withTracker } from 'meteor/svelte:tracker';
-
-import Persons from './persons.js';
-import Component from './Component.html';
-
-export default withTracker(Component, {
-  data(component) {
-    component.set({
-      person: Persons.findOne()
-    });
-  }
-});
-```
-
-```js
-// main.js
-
-import Container from './Container.js';
-
-new Container({
-  target: document.querySelector('#svelte-root')
-});
+See the [meteor-svelte/tracker-example](https://github.com/meteor-svelte/tracker-example) repository.
