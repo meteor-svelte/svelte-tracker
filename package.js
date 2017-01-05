@@ -1,6 +1,6 @@
 Package.describe({
   name: 'svelte:tracker',
-  version: '0.0.1',
+  version: '1.0.0',
   summary: 'Tracker integration for Svelte',
   git: 'https://github.com/meteor-svelte/svelte-tracker.git'
 });
@@ -12,7 +12,7 @@ Package.onUse(function (api) {
 
   // Compile ECMAScript and Svelte in this package
   api.use('ecmascript');
-  api.use('svelte:compiler');
+  api.use('svelte:compiler@1.0.0');
 
   api.mainModule('with-tracker.js');
 });
