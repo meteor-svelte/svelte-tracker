@@ -21,8 +21,8 @@ You can use this context object to store container state, e.g., live query handl
 
 **`data(component)`** (required)
 
-Called once when the container is rendered.  
-Changes of reactive dependencies established inside this function will cause it to rerun.
+Called when the container is rendered.
+Changes of reactive dependencies established in this function will cause it to rerun.
 
 **`onrender(component)`** (optional)
 
