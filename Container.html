@@ -4,8 +4,8 @@
 import { Tracker } from 'meteor/tracker';
 
 export default {
-  onrender() {
-    const { data, onrender } = this._options;
+  oncreate() {
+    const { data, oncreate } = this._options;
 
     this._instance = new this._component({
       target: this.refs._container
@@ -22,14 +22,14 @@ export default {
       });
     });
 
-    onrender && onrender.call(this._context, this._instance);
+    oncreate && oncreate.call(this._context, this._instance);
   },
 
-  onteardown() {
-    const { onteardown } = this._options;
+  ondestroy() {
+    const { ondestroy } = this._options;
 
     this._computation.stop();
-    onteardown && onteardown.call(this._context, this._instance);
+    ondestroy && ondestroy.call(this._context, this._instance);
   }
 };
 </script>

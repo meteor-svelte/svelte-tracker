@@ -24,14 +24,19 @@ You can use this context object to store container state, e.g., live query handl
 Called when the container is rendered.
 Changes of reactive dependencies established in this function will cause it to rerun.
 
-**`onrender(component)`** (optional)
+**`oncreate(component)`** (optional)
 
 Called after the container is rendered into the DOM and after the first call to `data`.
 
-**`onteardown(component)`** (optional)
+**`ondestroy(component)`** (optional)
 
 Called before the container is removed from the DOM.
 
 ## Example
 
 See the [meteor-svelte/tracker-example](https://github.com/meteor-svelte/tracker-example) repository.
+
+## Update from 1.x.x to 2.x.x
+
+In [Svelte 1.8.1](https://github.com/sveltejs/svelte/blob/master/CHANGELOG.md#181), `onrender` and `onteardown` were deprecated and replaced by `oncreate` and `ondestroy`.
+To reflect this API change, `withTracker` also uses the new function names.

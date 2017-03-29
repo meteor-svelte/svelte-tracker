@@ -2,7 +2,7 @@ import Container from './Container.html';
 
 export function withTracker(component, options) {
   // Create a new component and store the original component and the options so
-  // that they can be accessed in the container's `onrender` function
+  // that they can be accessed in the container's `oncreate` function.
   function Wrapped() {
     this._component = component;
     this._options = options;
@@ -10,7 +10,7 @@ export function withTracker(component, options) {
     Container.apply(this, arguments);
   }
 
-  // Inherit from container
+  // Inherit from container.
   Wrapped.prototype = Object.create(Container.prototype);
 
   return Wrapped;
