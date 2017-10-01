@@ -16,8 +16,13 @@ withTracker(component, options)
 ```
 
 The `options` object can contain the functions listed below.
-Each of these functions receives the rendered instance of the wrapped component as argument and an initially empty context object as `this`.
+Except for `initialData`, each of these functions receives the rendered instance of the wrapped component as argument and an initially empty context object as `this`.
 You can use this context object to store container state, e.g., live query handles and timeout identifiers.
+
+**`initialData()`** (optional)
+
+Called before the wrapped component is instantiated.
+Must return an object with the initial data.
 
 **`data(component)`** (required)
 
