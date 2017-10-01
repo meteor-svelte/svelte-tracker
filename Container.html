@@ -5,10 +5,11 @@ import { Tracker } from 'meteor/tracker';
 
 export default {
   oncreate() {
-    const { data, oncreate } = this._options;
+    const { initialData, data, oncreate } = this._options;
 
     this._instance = new this._component({
-      target: this.refs._container
+      target: this.refs._container,
+      data: initialData && initialData.call()
     });
 
     // Create an empty context object that will be passed as `this` to each
