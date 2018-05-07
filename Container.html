@@ -1,36 +1,36 @@
 <div ref:_container></div>
 
 <script>
-import { Tracker } from 'meteor/tracker';
+  import { Tracker } from 'meteor/tracker';
 
-export default {
-  oncreate() {
-    const { initialData, data, oncreate } = this._options;
+  export default {
+    oncreate() {
+      const { initialData, data, oncreate } = this._options;
 
-    this._instance = new this._component({
-      target: this.refs._container,
-      data: initialData && initialData.call()
-    });
-
-    // Create an empty context object that will be passed as `this` to each
-    // user-defined function. This object can be used to store container state,
-    // e.g., live query handles and timeout identifiers.
-    this._context = Object.create(null);
-
-    Tracker.nonreactive(() => {
-      this._computation = Tracker.autorun(() => {
-        data.call(this._context, this._instance);
+      this._instance = new this._component({
+        target: this.refs._container,
+        data: initialData && initialData.call()
       });
-    });
 
-    oncreate && oncreate.call(this._context, this._instance);
-  },
+      // Create an empty context object that will be passed as `this` to each
+      // user-defined function. This object can be used to store container
+      // state, e.g., live query handles and timeout identifiers.
+      this._context = Object.create(null);
 
-  ondestroy() {
-    const { ondestroy } = this._options;
+      Tracker.nonreactive(() => {
+        this._computation = Tracker.autorun(() => {
+          data.call(this._context, this._instance);
+        });
+      });
 
-    this._computation.stop();
-    ondestroy && ondestroy.call(this._context, this._instance);
-  }
-};
+      oncreate && oncreate.call(this._context, this._instance);
+    },
+
+    ondestroy() {
+      const { ondestroy } = this._options;
+
+      this._computation.stop();
+      ondestroy && ondestroy.call(this._context, this._instance);
+    }
+  };
 </script>
