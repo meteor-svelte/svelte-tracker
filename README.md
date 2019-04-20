@@ -2,6 +2,13 @@
 
 Tracker integration for Svelte
 
+---
+
+**Warning:** This package is **deprecated** for Svelte v3!
+Check out the [`tracker-example`](https://github.com/meteor-svelte/tracker-example) repository to see how Tracker can be used with Svelte v3.
+
+---
+
 ## Installation
 
 To use `svelte-tracker`, run `meteor add svelte:tracker` or add `svelte:tracker` manually to `.meteor/packages`.
